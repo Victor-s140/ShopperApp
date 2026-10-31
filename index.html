@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7fb">
+  <title>Counter — Shop sales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+   <script src="supabase-config.js" defer></script>
+   <script src="backend.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="auth-screen" id="auth-root">
+    <section class="auth-panel" aria-labelledby="auth-title">
+      <a class="brand auth-brand" href="#" aria-label="Counter home"><span class="brand-mark" aria-hidden="true">c</span><span>counter<span class="brand-period">.</span></span></a>
+      <p class="eyebrow">SHOP WORKSPACE</p>
+      <h1 id="auth-title">Sign in</h1>
+      <p class="subheading" id="auth-description">Use your shop account to access its products and sales.</p>
+      <form id="login-form" class="auth-form">
+        <div class="form-field"><label for="login-email">Email</label><input class="form-input" id="login-email" name="email" type="email" autocomplete="username" required></div>
+        <div class="form-field"><label for="login-password">Password</label><input class="form-input" id="login-password" name="password" type="password" autocomplete="current-password" required></div>
+        <div class="form-field" id="confirm-password-field" hidden><label for="confirm-password">Confirm password</label><input class="form-input" id="confirm-password" name="confirmPassword" type="password" autocomplete="new-password" minlength="8"></div>
+        <p class="form-error auth-error" id="auth-message" role="status" aria-live="polite"></p>
+        <button class="primary-button auth-submit" type="submit"><span id="auth-submit-label">Sign in</span></button>
+      </form>
+      <button class="text-button auth-mode-toggle" id="auth-mode-toggle" type="button">New here? Create a shop account</button>
+      <p class="auth-footnote">Each account has its own separate products and sales.</p>
+    </section>
+  </main>
+  <div class="app-shell" id="app-shell" hidden>
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="Counter home">
+        <span class="brand-mark" aria-hidden="true">c</span>
+        <span>counter<span class="brand-period">.</span></span>
+      </a>
+      <p class="nav-label">WORKSPACE</p>
+      <nav class="nav-links">
+        <button class="nav-link active" data-view="checkout" aria-current="page"><span class="nav-icon" aria-hidden="true">▦</span> Checkout</button>
+        <button class="nav-link" data-view="products"><span class="nav-icon" aria-hidden="true">◇</span> Products</button>
+        <button class="nav-link" data-view="sales"><span class="nav-icon" aria-hidden="true">↗</span> Sales history</button>
+        <button class="nav-link" data-view="credit"><span class="nav-icon" aria-hidden="true">₦</span> Credit sales</button>
+        <button class="nav-link" data-view="reports"><span class="nav-icon" aria-hidden="true">▥</span> Reports</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="store-status"><span class="status-dot"></span><span><strong>Connected</strong><small>Shared shop data</small></span></div>
+        <div class="user-card"><span class="avatar" id="account-avatar">S</span><span><strong id="account-name">Shop account</strong><small>Signed in</small></span></div>
+      </div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar">
+        <div class="breadcrumb"><span>My shop</span><span class="crumb-slash">/</span><strong id="page-title">Checkout</strong></div>
+        <div class="topbar-right">
+          <button class="text-button" id="import-local-button" title="Import data saved on this device" hidden>Import</button>
+          <span class="today-label" id="today-label"></span>
+          <button class="secondary-button sign-out-button" id="sign-out-button">Sign out</button>
+          <button class="icon-button" id="help-button" aria-label="About this app" title="About this app">?</button>
+        </div>
+      </header>
+      <div id="app-content" class="content-area"></div>
+    </main>
+  </div>
+  <div id="modal-root"></div>
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
